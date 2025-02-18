@@ -9,8 +9,8 @@ export default function Video({ title, channel, view, time, channel_img, thumbna
         `
         : '';
     return `
-        <div class="w-105 flex flex-col gap-3 pb-8 cursor-pointer" data-navigo id="${id}">
-            <div class="w-105 h-60 bg-gray-600 rounded-2xl relative">
+        <div class="w-90 flex flex-col gap-3 pb-8 cursor-pointer" data-navigo id="${id}">
+            <div class="w-90 h-50 bg-gray-600 rounded-2xl relative">
                 ${videoThumbnail}
                 <p class="absolute right-3 bottom-3 bg-red backdrop-blur-sm px-1 rounded-md text-sm font-semibold text-white">17:27</p>
             </div>

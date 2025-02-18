@@ -8,13 +8,13 @@ function renderHome() {
     if (document.querySelector('#main')) {
         document.querySelector('#main').innerHTML = `
             ${Navbar()}
-            <div id="sidebar" class="pt-16 fixed top-0 left-0 w-1/6 min-w-70 bg-white z-1 flex flex-col h-full px-4">
+            <div id="sidebar" class="pt-16 fixed top-0 left-0 w-1/6 min-w-60 bg-white z-1 flex flex-col h-full px-4">
                 <!-- Sidebar -->
                 ${Sidebar({ itemActive: 'home' })}
             </div>
             <div id="app" class="pt-16 ml-[16.67%] w-5/6 flex">
                 <!-- Content -->
-                <div class="flex flex-row flex-wrap justify-around gap-4 px-10 py-10">
+                <div class="flex flex-row flex-wrap justify-around gap-2 px-5 py-5">
                     ${videoList.map((vid) => Video(vid)).join('')}
                 </div>
             </div>

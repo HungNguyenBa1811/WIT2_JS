@@ -18,7 +18,7 @@ function renderWatch(params) {
                 ${Navbar()}
                 <!-- Content -->
                 <div class="w-full h-screen pt-16 ">
-                    <div class="px-8 py-8 flex flex-col">
+                    <div class="px-10 py-4 flex flex-col">
                         <div class="w-256 h-144 bg-black rounded-3xl">
                             <img
                                 src="${videoThumb}"
