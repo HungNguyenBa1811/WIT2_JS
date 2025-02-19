@@ -1,11 +1,12 @@
 import { router } from '../main.js';
-import { historyList } from '../data/list.js';
-import Sidebar, { sidebarList } from '../components/Sidebar.js';
+import { historyList, sidebarList } from '../data/list.js';
 import { VideoCol } from '../components/videoGrid.js';
+import Sidebar from '../components/Sidebar.js';
 import Navbar from '../components/Navbar.js';
 
 function renderHistory() {
     if (document.querySelector('#main')) {
+        //// Render \\\\
         document.querySelector('#main').innerHTML = `
             ${Navbar()}
             <div id="sidebar" class="pt-16 fixed top-0 left-0 w-1/6 flex flex-col h-full px-4">
@@ -22,15 +23,19 @@ function renderHistory() {
                 </div>
             </div>
         `;
+        //// Navigator \\\\
+        // Video \\
         historyList.forEach(({ id }) => {
             let idSelector = '#' + id;
             document.querySelector(idSelector).addEventListener('click', () => {
                 router.navigate('/watch/' + id);
             });
         });
+        // Navbar \\
         document.querySelector('#navbar').addEventListener('click', () => {
             router.navigate('/');
         });
+        // Sidebar \\
         sidebarList.forEach(({ path, id }) => {
             let idSelector = '#' + id;
             document.querySelector(idSelector).addEventListener('click', () => {
@@ -40,5 +45,4 @@ function renderHistory() {
     }
 }
 
-//export function
 export default renderHistory;

@@ -1,3 +1,4 @@
+// History list (temp)
 export const historyList = [
     {
         id: 'video3',
@@ -36,6 +37,7 @@ export const historyList = [
     },
 ];
 
+// Video data list (temp)
 export const videoList = [
     {
         id: 'video1',
@@ -120,6 +122,7 @@ export const videoList = [
     },
 ];
 
+// Sidebar item list
 export const sidebarList = [
     {
         id: 'home',

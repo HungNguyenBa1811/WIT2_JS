@@ -1,11 +1,12 @@
 import { router } from '../main';
-import { videoList } from './renderHome';
+import { videoList } from '../data/list';
 import Navbar from '../components/Navbar';
 
 function renderWatch(params) {
     if (document.querySelector('#main')) {
         let videoID = params.data.id;
         let currentVideo = videoList.filter((vid) => vid.id === videoID);
+        //// Find video in storage \\\\
         if (currentVideo.length) {
             let {
                 title: videoTitle,
@@ -13,6 +14,7 @@ function renderWatch(params) {
                 channel_img: channelImg,
                 channel: channelName,
             } = currentVideo[0];
+            //// Render \\\\
             document.querySelector('#main').innerHTML = `
                 ${Navbar()}
                 <!-- Content -->
@@ -61,21 +63,21 @@ function renderWatch(params) {
                     <button class="btn-to-top w-full h-full border-4 rounded-xl">▲</button>
                 </div>
             `;
+            // Copy button \\
             document.querySelector('.copy').addEventListener('click', (e) => {
                 let wholeText = e.target.parentElement;
                 let copyText = wholeText.children[0].innerText;
                 navigator.clipboard
                     .writeText(copyText)
                     .then(() => {
-                        // console.log("OK")
                         e.target.innerText = 'Copied!';
                         setTimeout(() => {
-                            // console.log("End timeout")
                             e.target.innerText = 'Copy';
                         }, 727);
                     })
                     .catch((err) => console.log('Failed: ', err));
             });
+            // Scroll-to-top button \\
             let btnToTop = document.querySelector('.btn-to-top');
             window.onscroll = () => {
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
@@ -90,6 +92,7 @@ function renderWatch(params) {
                 });
             });
         } else {
+            // Not found \\
             document.querySelector('#main').innerHTML = `
                 ${Navbar()}
                 <!-- Content -->
@@ -98,11 +101,12 @@ function renderWatch(params) {
                 </div>
             `;
         }
+        //// Navigator \\\\
+        // Navbar \\
         document.querySelector('#navbar').addEventListener('click', () => {
             router.navigate('/');
         });
     }
 }
 
-//export function
 export default renderWatch;

@@ -1,3 +1,4 @@
+// Grid for box layout
 export default function Video({ title, channel, view, time, channel_img, thumbnail, id }) {
     let videoThumbnail = thumbnail
         ? `
@@ -32,6 +33,7 @@ export default function Video({ title, channel, view, time, channel_img, thumbna
     `;
 }
 
+// Grid for list layout
 export function VideoCol({ title, channel, view, thumbnail, id }) {
     return `
         <div id="${id}" class="w-full flex flex-row cursor-pointer gap-4" data-navigo>

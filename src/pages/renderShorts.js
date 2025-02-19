@@ -1,9 +1,11 @@
 import { router } from '../main.js';
-import Sidebar, { sidebarList } from '../components/Sidebar.js';
+import { sidebarList } from '../data/list.js';
+import Sidebar from '../components/Sidebar.js';
 import Navbar from '../components/Navbar.js';
 
 function renderShorts() {
     if (document.querySelector('#main')) {
+        //// Render \\\\
         document.querySelector('#main').innerHTML = `
             ${Navbar()}
             <div id="sidebar" class="pt-16 fixed top-0 left-0 w-1/6 flex flex-col h-full px-4">
@@ -19,9 +21,12 @@ function renderShorts() {
                 </div>
             </div>
         `;
+        //// Navigator \\\\
+        // Navbar \\
         document.querySelector('#navbar').addEventListener('click', () => {
             router.navigate('/');
         });
+        // Sidebar \\
         sidebarList.forEach(({ path, id }) => {
             let idSelector = '#' + id;
             document.querySelector(idSelector).addEventListener('click', () => {
