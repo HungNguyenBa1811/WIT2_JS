@@ -3,12 +3,13 @@ import { videoList, sidebarList } from '../data/list.js';
 import Sidebar from '../components/Sidebar.js';
 import Video from '../components/videoGrid.js';
 import Navbar from '../components/Navbar.js';
+import CheckAuth from '../services/auth.js';
 
-function renderHome() {
+function renderHome({ isAuth }) {
     if (document.querySelector('#main')) {
         //// Render \\\\
         document.querySelector('#main').innerHTML = `
-            ${Navbar()}
+            ${Navbar({ isAuth })}
             <div id="sidebar" class="pt-16 fixed top-0 left-0 w-1/6 min-w-60 bg-white z-1 flex flex-col h-full px-4">
                 <!-- Sidebar -->
                 ${Sidebar({ itemActive: 'home' })}
@@ -20,6 +21,18 @@ function renderHome() {
                 </div>
             </div>
         `;
+
+        //// Toggle \\\\
+        // Sign In \\
+        document.getElementById('toggle-signin').addEventListener('click', () => {
+            let form = document.getElementById('signin-form');
+            if (form.classList.contains('hidden')) form.classList.remove('hidden');
+            else form.classList.add('hidden');
+        });
+
+        //// Login Form Control \\\\
+        CheckAuth({ isAuth })
+
         //// Navigator \\\\
         // Video \\
         videoList.forEach(({ id }) => {

@@ -1,8 +1,9 @@
 import { router } from '../main';
 import { videoList } from '../data/list';
 import Navbar from '../components/Navbar';
+import CheckAuth from '../services/auth.js';
 
-function renderWatch(params) {
+function renderWatch({ isAuth, params }) {
     if (document.querySelector('#main')) {
         let videoID = params.data.id;
         let currentVideo = videoList.filter((vid) => vid.id === videoID);
@@ -16,7 +17,7 @@ function renderWatch(params) {
             } = currentVideo[0];
             //// Render \\\\
             document.querySelector('#main').innerHTML = `
-                ${Navbar()}
+                ${Navbar({ isAuth })}
                 <!-- Content -->
                 <div class="w-full h-screen pt-16">
                     <div class="px-10 py-4 flex flex-col">
@@ -63,6 +64,17 @@ function renderWatch(params) {
                     <button class="btn-to-top w-full h-full border-4 rounded-xl">▲</button>
                 </div>
             `;
+            //// Toggle \\\\
+            // Sign In \\
+            document.getElementById('toggle-signin').addEventListener('click', () => {
+                let form = document.getElementById('signin-form');
+                if (form.classList.contains('hidden')) form.classList.remove('hidden');
+                else form.classList.add('hidden');
+            });
+    
+            //// Login Form Control \\\\
+            CheckAuth({ isAuth })
+            //// Utility \\\\
             // Copy button \\
             document.querySelector('.copy').addEventListener('click', (e) => {
                 let wholeText = e.target.parentElement;
@@ -94,7 +106,7 @@ function renderWatch(params) {
         } else {
             // Not found \\
             document.querySelector('#main').innerHTML = `
-                ${Navbar()}
+                ${Navbar({ isAuth })}
                 <!-- Content -->
                 <div class="w-full h-screen pt-16 flex justify-center items-center">
                     <p class="text-4xl">404 Error - Video Not Found (Video ID: #${videoID})</p>
