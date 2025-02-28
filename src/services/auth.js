@@ -10,7 +10,7 @@ export default function CheckAuth({ isAuth }) {
                 email,
                 password,
             };
-            fetch('/api/auth/login', {
+            fetch('https://auth-wit.vercel.app/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(auth),
                 headers: {
@@ -24,7 +24,7 @@ export default function CheckAuth({ isAuth }) {
                     window.localStorage.setItem('isLogin', true);
                     window.localStorage.setItem('loginToken', data.token);
                     document.getElementById('main').onclick = () =>
-                        window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                        (window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
                     const newWindow = window.open('', '_blank');
                     newWindow.document.write(`
@@ -59,7 +59,7 @@ export default function CheckAuth({ isAuth }) {
                     `);
                     newWindow.document.close();
                     setTimeout(() => {
-                        router.navigate('/')
+                        router.navigate('/');
                         window.location.reload();
                     }, 2727);
                 })
