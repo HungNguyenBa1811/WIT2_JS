@@ -74,6 +74,7 @@ function renderWatch({ isAuth, params }) {
     
             //// Login Form Control \\\\
             CheckAuth({ isAuth })
+            
             //// Utility \\\\
             // Copy button \\
             document.querySelector('.copy').addEventListener('click', (e) => {

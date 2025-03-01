@@ -31,7 +31,7 @@ function renderHome({ isAuth }) {
         });
 
         //// Login Form Control \\\\
-        CheckAuth({ isAuth })
+        CheckAuth({ isAuth });
 
         //// Navigator \\\\
         // Video \\
@@ -45,6 +45,18 @@ function renderHome({ isAuth }) {
         document.querySelector('#navbar').addEventListener('click', () => {
             router.navigate('/');
         });
+        if (!isAuth) {
+            // Login \\
+            document.querySelector('#viewsignin').addEventListener('click', () => {
+                router.navigate('/login');
+            });
+        } else {
+            // Profile \\
+            document.querySelector('#profile').addEventListener('click', () => {
+                router.navigate('/profile');
+            });
+        }
+
         // Sidebar \\
         sidebarList.forEach(({ path, id }) => {
             let idSelector = '#' + id;

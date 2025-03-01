@@ -32,6 +32,7 @@ function renderShorts({ isAuth }) {
 
         //// Login Form Control \\\\
         CheckAuth({ isAuth })
+        
         //// Navigator \\\\
         // Navbar \\
         document.querySelector('#navbar').addEventListener('click', () => {
