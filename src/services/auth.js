@@ -10,7 +10,7 @@ export default function CheckAuth({ isAuth }) {
                 email,
                 password,
             };
-            fetch('api/auth/login', {
+            fetch('https://auth-wit.vercel.app/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(auth),
                 headers: {
